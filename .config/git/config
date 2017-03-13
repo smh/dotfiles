@@ -1,0 +1,48 @@
+[include]
+  path = ~/.gitconfig.local
+
+[user]
+  name = Stein Martin Hustad
+  email = stein@hustad.com
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
+[merge]
+  tool = mvim
+
+[mergetool]
+  keepBackup = true
+
+[mergetool "mvim"]
+  cmd=mvim -d -g $LOCAL $MERGED $REMOTE
+
+[github]
+  user = smh
+
+[web]
+  browser = open
+
+[push]
+  default = simple
+
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+
+[log]
+  date = relative
+
+[format]
+  pretty = format:%C(yellow)%h %Cblue%>(13)%ad %Cgreen%<(9)%aN%Cred%d %Creset%s
+
+[status]
+  short = true
+  branch = true
+
+[alias]
+  s = status --short
+  st = status --long
