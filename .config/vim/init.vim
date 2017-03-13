@@ -6,6 +6,11 @@
 "set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 "let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
+if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
+  silent! execute '!curl --create-dirs -fsSLo ~/.local/share/nvim/site/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * silent! PlugInstall
+endif
+
 set nocompatible
 "filetype off
 
