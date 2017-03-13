@@ -4,8 +4,8 @@ if status --is-interactive
 
   sh ~/.base16_theme
 
-  source (nodenv init -|psub)
-  eval (direnv hook fish)
+  command --search nodenv >> /dev/null; and source (nodenv init -|psub)
+  command --search direnv >> /dev/null; and eval (direnv hook fish)
 
   alias vi=nvim
   alias dc=docker-compose
