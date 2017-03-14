@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd $HOME
+
+# initialize submodules
+echo init submodules
+yadm submodule update --recursive --init
+
+echo Update the yadm repo origin URL
+yadm remote set-url origin "git@github.com:smh/dotfiles.git"
+
+
