@@ -1,5 +1,6 @@
 #!/bin/bash
 
 source $HOME/.yadm/bootstrap-repo
+source $HOME/.yadm/bootstrap-homebrew
 source $HOME/.yadm/bootstrap-vim
 source $HOME/.yadm/bootstrap-fish
