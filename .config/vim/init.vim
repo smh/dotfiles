@@ -21,7 +21,7 @@ set nocompatible
 " Setup vim-plug ----------------------------{{{
 call plug#begin('~/.config/vim/plugged')
 
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -49,6 +49,7 @@ Plug 'vimwiki'
 Plug 'ledger/vim-ledger'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 au BufNewFile,BufRead *.json setf json
 Plug 'editorconfig/editorconfig'
@@ -63,6 +64,8 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-slash'
 Plug 'junegunn/limelight.vim'
 " Plug 'junegunn/rainbow_parentheses.vim'
+
+Plug 'w0rp/ale'
 
 " Clojure stuff
 "Plug 'guns/vim-clojure-static'
@@ -189,6 +192,8 @@ let ruby_fold=1               " Ruby
 let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
+
+let g:jsx_ext_required = 0
 
 "let g:syntastic_mode_map = { 'mode': 'active',
 "                           \ 'active_filetypes': ['foo', 'bar'],
@@ -405,39 +410,39 @@ endfunction
 
 " Sets b:neomake_javascript_enabled_makers based on what is present in the
 " project
-function! s:setupEslint() abort
-    if !exists('b:neomake_javascript_eslint_exe')
-      let l:rootFolder = s:findRootPackageJsonFolder()
-      let l:eslint = l:rootFolder . '/node_modules/eslint/bin/eslint.js'
-      if !empty(l:rootFolder)
-        if filereadable(l:eslint)
-          let b:neomake_javascript_eslint_exe = l:eslint
-        else
-          let b:neomake_javascript_eslint_exe = 'eslint'
-        endif
-      else
-        let b:neomake_javascript_eslint_exe = 'eslint'
-      endif
-    endif
-endfunction
+" function! s:setupEslint() abort
+"     if !exists('b:neomake_javascript_eslint_exe')
+"       let l:rootFolder = s:findRootPackageJsonFolder()
+"       let l:eslint = l:rootFolder . '/node_modules/eslint/bin/eslint.js'
+"       if !empty(l:rootFolder)
+"         if filereadable(l:eslint)
+"           let b:neomake_javascript_eslint_exe = l:eslint
+"         else
+"           let b:neomake_javascript_eslint_exe = 'eslint'
+"         endif
+"       else
+"         let b:neomake_javascript_eslint_exe = 'eslint'
+"       endif
+"     endif
+" endfunction
 
-autocmd! BufNewFile,BufReadPre * call s:setupEslint()
+" autocmd! BufNewFile,BufReadPre * call s:setupEslint()
 
-autocmd! BufWritePost,BufEnter * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-"let g:neomake_javascript_eslint_exe = system('npm root') .'/eslint/bin/eslint.js'
-"let g:neomake_javascript_maker = 'npm run lint'
-"let g:neomake_open_list = '2
-"let g:neomake_javascript_eslint_maker = {
-  "\ 'exe': 'yarn',
-  "\ 'args': ['run', 'lint', '--', '-f', 'compact'],
-  "\ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,%W%f: line %l\, col %c\, Warning - %m'
-  "\ }
-let g:neomake_javascript_maker = {
-  \ 'exe': 'yarn',
-  \ 'args': ['run', 'lint', '--', '-f', 'compact'],
-  \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,%W%f: line %l\, col %c\, Warning - %m'
-  \ }
+" autocmd! BufWritePost,BufEnter * Neomake
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" "let g:neomake_javascript_eslint_exe = system('npm root') .'/eslint/bin/eslint.js'
+" "let g:neomake_javascript_maker = 'npm run lint'
+" "let g:neomake_open_list = '2
+" "let g:neomake_javascript_eslint_maker = {
+"   "\ 'exe': 'yarn',
+"   "\ 'args': ['run', 'lint', '--', '-f', 'compact'],
+"   "\ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,%W%f: line %l\, col %c\, Warning - %m'
+"   "\ }
+" let g:neomake_javascript_maker = {
+"   \ 'exe': 'yarn',
+"   \ 'args': ['run', 'lint', '--', '-f', 'compact'],
+"   \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,%W%f: line %l\, col %c\, Warning - %m'
+"   \ }
 
 
 "}}}
