@@ -59,6 +59,11 @@ Plug 'gorodinskiy/vim-coloresque'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'junegunn/gv.vim'
+Plug 'junegunn/vim-slash'
+Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/rainbow_parentheses.vim'
+
 " Clojure stuff
 "Plug 'guns/vim-clojure-static'
 "Plug 'kien/rainbow_parentheses.vim'
