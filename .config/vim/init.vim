@@ -6,6 +6,10 @@
 "set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 "let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
   silent! execute '!curl --create-dirs -fsSLo ~/.local/share/nvim/site/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * silent! PlugInstall
@@ -441,5 +445,15 @@ endif
 "}}}
 
 " Use DiffOrig to view diff after recovery --- {{{
-  command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
+"  command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
 "}}}
+
+" Fzf -----------------------------------------{{{
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=? -complete=dir GFiles
+  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+"}}}
+
+
