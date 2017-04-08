@@ -144,9 +144,7 @@ map <leader>h :split<CR>
 map <leader>gs :Gstatus<CR>
 
 map <a-/> <Plug>NERDCommenterToggle
-map <c-/> <Plug>NERDCommenterToggle
-
-map <leader>f :Files<cr>
+map <c-_> <Plug>NERDCommenterToggle
 "}}}
 "
 " Color ---------------------------------{{{
@@ -464,6 +462,23 @@ command! -bang -nargs=? -complete=dir Files
 
 command! -bang -nargs=? -complete=dir GFiles
   \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+fun! FzfOmniFiles()
+  let is_git = system('git status')
+  if v:shell_error
+    :Files
+  else
+    :GitFiles
+  endif
+endfun
+
+nnoremap <C-l> :Buffers<CR>
+nnoremap <C-g>g :Ag<CR>
+nnoremap <leader><leader> :Commands<CR>
+nnoremap <C-p> :call FzfOmniFiles()<CR>
+
+nnoremap <leader>s :source ~/.config/vim/init.vim<CR>
+" nnoremap <leader>f :call FzfOmniFiles()<cr>
 "}}}
 
 
