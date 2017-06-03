@@ -10,6 +10,8 @@ if &shell =~# 'fish$'
   set shell=sh
 endif
 
+language en_US.UTF-8
+
 if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
   silent! execute '!curl --create-dirs -fsSLo ~/.local/share/nvim/site/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * silent! PlugInstall
@@ -41,7 +43,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jeetsukumaran/vim-buffergator'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
-Plug 'vimwiki'
+Plug 'vimwiki/vimwiki'
 "Plug 'skammer/vim-css-color' " causing slow loading of html files
 "Plug 'basepi/vim-conque'
 "Plug 'skwp/vim-ruby-conque'
@@ -85,6 +87,7 @@ endif
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'jaawerth/nrun.vim' " which and exec functions targeted at node projects
 
@@ -119,6 +122,15 @@ if has('nvim')
   set inccommand=nosplit
 endif
 set encoding=utf8
+
+" Ultisnips *******************************************************************
+" Trigger configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
 
 " Windows *********************************************************************
 set equalalways " Multiple windows, when created, are equal in size
@@ -460,8 +472,33 @@ endif
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-command! -bang -nargs=? -complete=dir GFiles
+command! -bang -nargs=? -complete=dir GitFiles
   \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+"
+" Augmenting Ag command using fzf#vim#with_preview function
+"   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
+"     * For syntax-highlighting, Ruby and any of the following tools are required:
+"       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
+"       - CodeRay: http://coderay.rubychan.de/
+"       - Rouge: https://github.com/jneen/rouge
+"
+"   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
+"   :Ag! - Start fzf in fullscreen and display the preview window above
+" command! -bang -nargs=* Ag
+"   \ call fzf#vim#ag(<q-args>,
+"   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \                 <bang>0)
 
 fun! FzfOmniFiles()
   let is_git = system('git status')
