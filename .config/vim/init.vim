@@ -40,7 +40,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'scrooloose/syntastic'
 "Plug 'majutsushi/tagbar'
-Plug 'jeetsukumaran/vim-buffergator'
+" Plug 'jeetsukumaran/vim-buffergator'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 Plug 'vimwiki/vimwiki'
@@ -479,11 +479,7 @@ command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 "
 " Augmenting Ag command using fzf#vim#with_preview function
 "   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
@@ -509,8 +505,11 @@ fun! FzfOmniFiles()
   endif
 endfun
 
-nnoremap <C-l> :Buffers<CR>
-nnoremap <C-g>g :Ag<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <C-g>a :Ag<CR>
+nnoremap <C-g>r :Rg<CR>
+nnoremap <C-g>h :BCommits<CR>
+nnoremap <C-g>g :Commits<CR>
 nnoremap <leader><leader> :Commands<CR>
 nnoremap <C-p> :call FzfOmniFiles()<CR>
 
