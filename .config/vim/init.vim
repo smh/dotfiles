@@ -57,6 +57,8 @@ au BufNewFile,BufRead *.json setf json
 Plug 'editorconfig/editorconfig'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'mbbill/undotree'
+
 Plug 'gorodinskiy/vim-coloresque'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
