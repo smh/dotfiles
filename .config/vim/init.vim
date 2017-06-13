@@ -217,6 +217,40 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
 let g:ledger_fillstring = '·'
 
 let g:airline_powerline_fonts = 1
+" let g:airline_skip_empty_sections = 1
+
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V-L',
+    \ '^V' : 'V-B',
+    \ 's'  : 'S',
+    \ 'S'  : 'S-L',
+    \ '^S' : 'S-B',
+    \ }
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_alt_sep = ''
+
+call airline#parts#define_raw('linenr', '%l')
+call airline#parts#define_accent('linenr', 'bold')
+" let g:airline_section_z = airline#section#create(['%2p%%', g:airline_symbols.linenr .'', 'linenr', ':%c'])
+let g:airline_section_z = airline#section#create(['%2p%% ', 'linenr', ':%c'])
+
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline_skip_empty_sections = 1
 
 function! DoPrettyXML()
   " save the filetype so we can restore it later
@@ -371,14 +405,14 @@ let g:NERDTreeIndicatorMapCustom = {
 set guifont=Mononoki-Regular\ Nerd\ Font\ Complete\ Mono:h11
 
 let g:webdevicons_enable = 1
-" adding the flags to NERDTree 
+" adding the flags to NERDTree
 let g:webdevicons_enable_nerdtree = 1
 
 " use double-width(1) or single-width(0) glyphs
 " only manipulates padding, has no effect on terminal or set(guifont) font
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 
-" Force extra padding in NERDTree so that the filetype icons line up vertically 
+" Force extra padding in NERDTree so that the filetype icons line up vertically
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
@@ -516,5 +550,3 @@ nnoremap <C-p> :call FzfOmniFiles()<CR>
 nnoremap <leader>s :source ~/.config/vim/init.vim<CR>
 " nnoremap <leader>f :call FzfOmniFiles()<cr>
 "}}}
-
-
