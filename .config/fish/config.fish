@@ -7,7 +7,6 @@ if status --is-interactive
   end
   sh ~/.base16_theme
 
-  command --search nodenv >> /dev/null; and source (nodenv init -|psub)
   command --search direnv >> /dev/null; and eval (direnv hook fish)
 
   alias vi=nvim
