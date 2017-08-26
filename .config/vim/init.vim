@@ -68,7 +68,9 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-slash'
 Plug 'junegunn/limelight.vim'
 " Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'junegunn/vim-journal'
 
+Plug 'sbdchd/neoformat'
 Plug 'w0rp/ale'
 
 " Clojure stuff
@@ -456,6 +458,15 @@ let g:NERDDefaultAlign = 'left'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+" Neoformat -----------------------------------{{{
+augroup NeoFormatPrettier
+  autocmd BufWritePre *.js Neoformat
+  autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all
+augroup END
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
+let g:neoformat_only_msg_on_error = 1
+" }}}
 " Neomake ------------------------------------{{{
 
 function! s:findRootPackageJsonFolder() abort
