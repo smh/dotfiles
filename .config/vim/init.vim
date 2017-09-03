@@ -23,6 +23,8 @@ set nocompatible
 " Setup vim-plug ----------------------------{{{
 call plug#begin('~/.config/vim/plugged')
 
+Plug 'jreybert/vimagit'
+
 " Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-endwise'
