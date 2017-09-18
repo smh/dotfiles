@@ -286,8 +286,8 @@ let g:airline_skip_empty_sections = 1
 
 function! DoPrettyXML() abort
   " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
+  let l:origft = &filetype
+  set filetype=
   " delete the xml header if it exists. This will
   " permit us to surround the document with fake tags
   " without creating invalid xml.
