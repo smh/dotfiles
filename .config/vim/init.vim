@@ -75,6 +75,8 @@ Plug 'junegunn/vim-journal'
 Plug 'sbdchd/neoformat'
 Plug 'w0rp/ale'
 
+Plug 'mattn/emmet-vim'
+
 " Clojure stuff
 "Plug 'guns/vim-clojure-static'
 "Plug 'kien/rainbow_parentheses.vim'
@@ -520,6 +522,20 @@ endfunction
 
 "}}}
 
+" Ale ---------------------------------------- {{{
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+"}}}
+
+" emmet-vim ---------------------------------- {{{
+" let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+"}}}
 " VimWiki ------------------------------------ {{{
 let g:vimwiki_list = [{'path': '~/Dropbox/Private/vimwiki'}]
 if has("win32unix")
