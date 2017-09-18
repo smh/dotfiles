@@ -17,7 +17,8 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
   autocmd VimEnter * silent! PlugInstall
 endif
 
-set nocompatible
+" https://www.reddit.com/r/vim/wiki/vimrctips#wiki_you_don.27t_need_set_nocompatible
+"set nocompatible
 "filetype off
 
 " Setup vim-plug ----------------------------{{{
@@ -112,7 +113,6 @@ call plug#end()
 
 "syntax on
 
-set nocompatible
 set list
 set relativenumber number
 set autowrite
