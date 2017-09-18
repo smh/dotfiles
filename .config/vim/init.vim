@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 " Attempt to support XDG_CONFIG_HOME
 " Environment
 "set directory=$XDG_CACHE_HOME/vim,~/,/tmp
@@ -129,7 +132,6 @@ set hlsearch
 if has('nvim')
   set inccommand=nosplit
 endif
-set encoding=utf8
 
 " Ultisnips *******************************************************************
 " Trigger configuration
