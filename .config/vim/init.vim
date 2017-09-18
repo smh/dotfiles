@@ -283,7 +283,7 @@ let g:airline_section_z = airline#section#create(['%2p%% ', 'linenr', ':%c'])
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_skip_empty_sections = 1
 
-function! DoPrettyXML()
+function! DoPrettyXML() abort
   " save the filetype so we can restore it later
   let l:origft = &ft
   set ft=
