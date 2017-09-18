@@ -153,7 +153,7 @@ set equalalways " Multiple windows, when created, are equal in size
 set splitbelow splitright
 
 " Show tabs and trailing spaces
-if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8') && version >= 700
+if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8') && v:version >= 700
   "set listchars=tab:›,trail:·
   "let &listchars = "tab:\u21e5\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
   let &listchars = "tab:\u203a\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
@@ -162,7 +162,7 @@ else
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<
 endif
 
-let mapleader = ' '
+let g:mapleader = ' '
 
 map <leader>n :NERDTreeFocus<CR>
 map <leader>v :vsplit<CR>
@@ -189,7 +189,7 @@ map <c-_> <Plug>NERDCommenterToggle
 
 " load base16 colorscheme
 if filereadable(expand('~/.vimrc_background'))
-  let base16colorspace=256
+  let g:base16colorspace=256
   source ~/.vimrc_background
 endif
 
@@ -211,13 +211,13 @@ set foldmethod=syntax
 "
 autocmd vimrc Syntax javascript,json,c,java,ruby,python,clojure normal zR
 
-let javaScript_fold=1         " JavaScript
-let perl_fold=1               " Perl
-let php_folding=1             " PHP
-let r_syntax_folding=1        " R
-let ruby_fold=1               " Ruby
-let sh_fold_enabled=1         " sh
-let vimsyn_folding='af'       " Vim script
+let g:javaScript_fold=1         " JavaScript
+let g:perl_fold=1               " Perl
+let g:php_folding=1             " PHP
+let g:r_syntax_folding=1        " R
+let g:ruby_fold=1               " Ruby
+let g:sh_fold_enabled=1         " sh
+let g:vimsyn_folding='af'       " Vim script
 " let xml_syntax_folding=1      " XML
 
 let g:jsx_ext_required = 0
@@ -309,7 +309,7 @@ function! DoPrettyXML() abort
   " back to home
   1
   " restore the filetype
-  exe 'set ft=' . l:origft
+  exe 'set filetype=' . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
 
@@ -586,7 +586,7 @@ command! -bang -nargs=* Rg
 "   \                 <bang>0)
 
 fun! FzfOmniFiles()
-  let is_git = system('git status')
+  let s:is_git = system('git status')
   if v:shell_error
     :Files
   else
