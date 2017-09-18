@@ -19,7 +19,7 @@ endif
 
 language en_US.UTF-8
 
-if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent! execute '!curl --create-dirs -fsSLo ~/.local/share/nvim/site/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
   autocmd vimrc VimEnter * silent! PlugInstall
 endif
@@ -118,7 +118,7 @@ call plug#end()
 " Settings -------------------------{{{
 "filetype plugin indent on
 
-if !exists("g:syntax_on")
+if !exists('g:syntax_on')
     syntax enable
 endif
 
@@ -141,9 +141,9 @@ endif
 
 " Ultisnips *******************************************************************
 " Trigger configuration
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<c-b>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
@@ -162,7 +162,7 @@ else
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<
 endif
 
-let mapleader = " "
+let mapleader = ' '
 
 map <leader>n :NERDTreeFocus<CR>
 map <leader>v :vsplit<CR>
@@ -188,7 +188,7 @@ map <c-_> <Plug>NERDCommenterToggle
 
 
 " load base16 colorscheme
-if filereadable(expand("~/.vimrc_background"))
+if filereadable(expand('~/.vimrc_background'))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
@@ -227,8 +227,9 @@ let g:jsx_ext_required = 0
 "                           \ 'passive_filetypes': ['java'] }
 
 "au FileType javascript call JavaScriptFold()
+"
 
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute "]
+let g:syntastic_html_tidy_ignore_errors=[' proprietary attribute ']
 "let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 let g:ledger_fillstring = '·'
@@ -308,7 +309,7 @@ function! DoPrettyXML() abort
   " back to home
   1
   " restore the filetype
-  exe "set ft=" . l:origft
+  exe 'set ft=' . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
 
@@ -317,7 +318,7 @@ let g:deoplete#enable_at_startup = 1
 " disable autocomplete
 let g:deoplete#disable_auto_complete = 1
 
-if has("gui_running")
+if has('gui_running')
     inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
 else
     inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
@@ -325,9 +326,9 @@ endif
 
 " UltiSnips config
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " omnifuncs
 augroup omnifuncs
@@ -344,8 +345,8 @@ if exists('g:plugs["tern_for_vim"]')
   let g:tern_map_keys=1
   let g:tern_show_argument_hints = 'on_hold'
   let g:tern_show_signature_in_pum = 1
-  let g:tern#command = ["tern"]
-  let g:tern#arguments = ["--persistent"]
+  let g:tern#command = ['tern']
+  let g:tern#arguments = ['--persistent']
 
   autocmd omnifuncs FileType javascript setlocal omnifunc=tern#Complete
 endif
@@ -417,16 +418,16 @@ endif
 
 " nerdtree-git-plugin symbols{{{
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "⊕",
-    \ "Untracked" : "⭒",
-    \ "Renamed"   : "→",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Ignored"   : "◌",
-    \ "Unknown"   : "?"
+    \ 'Modified'  : '✹',
+    \ 'Staged'    : '⊕',
+    \ 'Untracked' : '⭒',
+    \ 'Renamed'   : '→',
+    \ 'Unmerged'  : '═',
+    \ 'Deleted'   : '✖',
+    \ 'Dirty'     : '✗',
+    \ 'Clean'     : '✔︎',
+    \ 'Ignored'   : '◌',
+    \ 'Unknown'   : '?'
     \ }
 "}}}
 
@@ -545,7 +546,7 @@ let g:user_emmet_settings = {
 "}}}
 " VimWiki ------------------------------------ {{{
 let g:vimwiki_list = [{'path': '~/Dropbox/Private/vimwiki'}]
-if has("win32unix")
+if has('win32unix')
   let g:vimwiki_list = [{'path': '~/vimwiki'}]
 endif
 "}}}
