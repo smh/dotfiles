@@ -118,7 +118,9 @@ call plug#end()
 " Settings -------------------------{{{
 "filetype plugin indent on
 
-"syntax on
+if !exists("g:syntax_on")
+    syntax enable
+endif
 
 set list
 set relativenumber number
