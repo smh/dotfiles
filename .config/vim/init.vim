@@ -288,10 +288,13 @@ function! DoPrettyXML() abort
   " save the filetype so we can restore it later
   let l:origft = &filetype
   set filetype=
+  let l:savedview = winsaveview()
   " delete the xml header if it exists. This will
   " permit us to surround the document with fake tags
   " without creating invalid xml.
+  " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
   1s/<?xml .*?>//e
+  " vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
   " insert fake tags around the entire document.
   " This will permit us to pretty-format excerpts of
   " XML that may contain multiple top-level elements.
@@ -308,6 +311,7 @@ function! DoPrettyXML() abort
   silent %<
   " back to home
   1
+  call winrestview(l:savedview)
   " restore the filetype
   exe 'set filetype=' . l:origft
 endfunction
