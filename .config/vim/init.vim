@@ -560,7 +560,7 @@ if !exists(':DiffOrig')
 endif
 "}}}
 
-" Fzf -----------------------------------------{{{
+" Fzf ---------------------------------------- {{{
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
@@ -607,4 +607,9 @@ nnoremap <C-p> :call FzfOmniFiles()<CR>
 
 nnoremap <leader>s :source ~/.config/vim/init.vim<CR>
 " nnoremap <leader>f :call FzfOmniFiles()<cr>
+"}}}
+"
+" session options ---------------------------- {{{
+set sessionoptions=options " don't save options and mappings
+set sessionoptions=folds
 "}}}
