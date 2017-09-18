@@ -1,6 +1,10 @@
 set encoding=utf-8
 scriptencoding utf-8
 
+augroup vimrc
+  autocmd!
+augroup END
+
 " Attempt to support XDG_CONFIG_HOME
 " Environment
 "set directory=$XDG_CACHE_HOME/vim,~/,/tmp
@@ -17,7 +21,7 @@ language en_US.UTF-8
 
 if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
   silent! execute '!curl --create-dirs -fsSLo ~/.local/share/nvim/site/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * silent! PlugInstall
+  autocmd vimrc VimEnter * silent! PlugInstall
 endif
 
 " https://www.reddit.com/r/vim/wiki/vimrctips#wiki_you_don.27t_need_set_nocompatible
@@ -59,7 +63,7 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
-au BufNewFile,BufRead *.json setf json
+autocmd vimrc BufNewFile,BufRead *.json setf json
 Plug 'editorconfig/editorconfig'
 Plug 'airblade/vim-gitgutter'
 
@@ -193,16 +197,17 @@ set undofile
 set undodir="$HOME/.config/.vim_undo_files"
 
 " Remember cursor position between vim sessions
-autocmd BufReadPost *
+autocmd vimrc BufReadPost *
             \ if line("'\"") > 0 && line ("'\"") <= line("$") |
             \   exe "normal! g'\"" |
             \ endif
             " center buffer around cursor when opening files
-autocmd BufRead * normal zz
+autocmd vimrc BufRead * normal zz
 
 set foldmethod=syntax
 "set foldlevelstart=1
-autocmd Syntax javascript,json,c,java,ruby,python,clojure normal zR
+"
+autocmd vimrc Syntax javascript,json,c,java,ruby,python,clojure normal zR
 
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
@@ -340,9 +345,7 @@ if exists('g:plugs["tern_for_vim"]')
   let g:tern#command = ["tern"]
   let g:tern#arguments = ["--persistent"]
 
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-
-
+  autocmd omnifuncs FileType javascript setlocal omnifunc=tern#Complete
 endif
 
 " update navigation keys
@@ -383,7 +386,7 @@ if has('nvim')
   tnoremap <a-k> <c-\><c-n>:TmuxNavigateUp<cr>
   tnoremap <a-h> <c-\><c-n>:TmuxNavigateDown<cr>
   tnoremap <a-l> <c-\><c-n>:TmuxNavigateRight<cr>
-  au WinEnter *pid:* call feedkeys('i')
+  autocmd vimrc WinEnter *pid:* call feedkeys('i')
 endif
 
 "nnoremap <a-j> <c-w>j
@@ -450,7 +453,7 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
-autocmd FileType nerdtree setlocal nolist
+autocmd vimrc FileType nerdtree setlocal nolist
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
