@@ -91,7 +91,6 @@ cask "elm-platform"
 cask "emacs"
 cask "firefox"
 cask "google-chrome"
-cask "google-earth"
 cask "iterm2"
 cask "karabiner-elements"
 cask "minikube"
@@ -108,10 +107,8 @@ cask "quicklookase"
 cask "skype"
 cask "slate"
 cask "suspicious-package"
-cask "virtualbox"
 cask "webpquicklook"
 cask "caskroom/fonts/font-mononoki-nerd-font"
-mas "Aperture", id: 408981426
 mas "iMovie", id: 408981434
 mas "iPhoto", id: 408981381
 mas "Keynote", id: 409183694
@@ -121,8 +118,6 @@ mas "OmniFocus", id: 402835630
 mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
-mas "Pomodorable", id: 503406673
 mas "Skitch", id: 425955336
 mas "Slack", id: 803453959
 mas "Twitter", id: 409789998
-mas "Xcode", id: 497799835
