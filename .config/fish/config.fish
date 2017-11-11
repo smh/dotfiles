@@ -13,7 +13,6 @@ if status --is-interactive
   alias dc=docker-compose
   alias dm=docker-machine
 
-  fish_hybrid_key_bindings
   #fish_vi_cursor
 end
 
