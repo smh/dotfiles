@@ -10,6 +10,7 @@ fisherman/last_job_id
 fisherman/nodenv
 oh-my-fish/plugin-osx
 smh/pure
+fisherman/pyenv
 fisherman/spin
 fisherman/termcolours
 oh-my-fish/plugin-tmux
