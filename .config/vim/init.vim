@@ -112,6 +112,8 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'wilriker/vim-fish'
 
+Plug 'tomlion/vim-solidity'
+
 call plug#end()
 " }}}
 "
