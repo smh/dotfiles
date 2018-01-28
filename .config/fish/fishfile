@@ -2,6 +2,8 @@ fisherman/anicode
 smh/base16-shell-fish
 fisherman/choices
 fisherman/docker-completion
+fisherman/get
+fisherman/getopts
 fisherman/nodenv
 oh-my-fish/plugin-osx
 smh/pure
