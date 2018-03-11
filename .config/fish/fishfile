@@ -1,9 +1,12 @@
 fisherman/anicode
+fisherman/await
 smh/base16-shell-fish
 fisherman/choices
 fisherman/docker-completion
+fisherman/fzf
 fisherman/get
 fisherman/getopts
+fisherman/last_job_id
 fisherman/nodenv
 oh-my-fish/plugin-osx
 smh/pure
