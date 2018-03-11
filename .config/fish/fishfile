@@ -11,6 +11,7 @@ fisherman/nodenv
 oh-my-fish/plugin-osx
 smh/pure
 fisherman/pyenv
+smh/pyenv-virtualenv
 fisherman/spin
 fisherman/termcolours
 oh-my-fish/plugin-tmux
