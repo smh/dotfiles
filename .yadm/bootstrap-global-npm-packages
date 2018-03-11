@@ -2,7 +2,7 @@
 
 if command -v yarn >/dev/null 2>&1; then
   echo adding javascript-typescript-langserver
-  yarn global add javascript-typescript-langserver
-  echo setting up local-npm and npmrc
-  curl -sL https://raw.githubusercontent.com/nolanlawson/local-npm-launch-agent/master/script.py | python -
+  yarn global add javascript-typescript-langserver tern
+  #echo setting up local-npm and npmrc
+  #curl -sL https://raw.githubusercontent.com/nolanlawson/local-npm-launch-agent/master/script.py | python -
 fi
