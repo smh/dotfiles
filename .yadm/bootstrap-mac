@@ -1,0 +1,22 @@
+#!/bin/bash
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+
+  # show Library folder
+  chflags nohidden ~/Library
+
+  # show hidden files
+  defaults write com.apple.finder AppleShowAllFiles YES
+
+  # show path bar
+  defaults write com.apple.finder ShowPathbar -bool true
+
+  # show status bar
+  defaults write com.apple.finder ShowStatusBar -bool true
+
+  source $HOME/.yadm/bootstrap-homebrew
+  source $HOME/.yadm/bootstrap-iterm2
+  source $HOME/.yadm/bootstrap-pyenv
+fi

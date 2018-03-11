@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source $HOME/.yadm/bootstrap-repo
+source $HOME/.yadm/bootstrap-global-npm-packages
 source $HOME/.yadm/bootstrap-mac
 source $HOME/.yadm/bootstrap-vim
 source $HOME/.yadm/bootstrap-fish
