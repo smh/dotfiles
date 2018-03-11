@@ -17,6 +17,9 @@ if &shell =~# 'fish$'
   set shell=sh
 endif
 
+let g:python_host_prog = '/Users/smh/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/smh/.pyenv/versions/neovim3/bin/python'
+
 language en_US.UTF-8
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -81,6 +84,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-journal'
 
 Plug 'sbdchd/neoformat'
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'w0rp/ale'
 
 Plug 'mattn/emmet-vim'
@@ -96,12 +100,12 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'wakatime/vim-wakatime'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-endif
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim'
+" endif
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -113,6 +117,14 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'wilriker/vim-fish'
 
 Plug 'tomlion/vim-solidity'
+
+Plug 'reasonml-editor/vim-reason-plus'
+
+" LanguageClient plugin
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+"
+" IDE-like autocompletion without
+Plug 'roxma/nvim-completion-manager'
 
 call plug#end()
 " }}}
@@ -140,6 +152,43 @@ set hlsearch
 if has('nvim')
   set inccommand=nosplit
 endif
+
+" LanuageClient ***************************************************************
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+" Minimal LSP configuration for JavaScript
+" let g:LanguageClient_serverCommands = {}
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ }
+if executable('javascript-typescript-stdio')
+  " let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  " let g:LanguageClient_serverCommands['javascript.jsx']= ['javascript-typescript-stdio']
+  " Use LanguageServer for omnifunc completion
+  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+else
+  echo "javascript-typescript-stdio not installed!\n"
+  :cq
+endif
+
+" <leader>ld to go to definition
+autocmd FileType javascript,javascript.jsx nnoremap <buffer>
+  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
+" <leader>lh for type info under cursor
+autocmd FileType javascript,javascript.jsx nnoremap <buffer>
+  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
+" <leader>lr to rename variable under cursor
+autocmd FileType javascript,javascript.jsx nnoremap <buffer>
+  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+
+" <leader>lf to fuzzy find the symbols in the current document
+autocmd FileType javascript,javascript.jsx nnoremap <buffer>
+  \ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
 
 " Ultisnips *******************************************************************
 " Trigger configuration
@@ -319,16 +368,16 @@ function! DoPrettyXML() abort
 endfunction
 command! PrettyXML call DoPrettyXML()
 
-" deoplete config
-let g:deoplete#enable_at_startup = 1
-" disable autocomplete
-let g:deoplete#disable_auto_complete = 1
+" " deoplete config
+" let g:deoplete#enable_at_startup = 1
+" " disable autocomplete
+" let g:deoplete#disable_auto_complete = 1
 
-if has('gui_running')
-    inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
-else
-    inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
-endif
+" if has('gui_running')
+"     inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
+" else
+"     inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
+" endif
 
 " UltiSnips config
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -476,10 +525,14 @@ let g:NERDDefaultAlign = 'left'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+" vim-prettier
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
 " Neoformat -----------------------------------{{{
 augroup NeoFormatPrettier
-  autocmd BufWritePre *.js Neoformat
-  autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all
+  autocmd BufWritePre *.js,*.jsx Neoformat
+  autocmd FileType javascript,javascript.jsx,jsx setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all
 augroup END
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
