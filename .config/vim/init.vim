@@ -126,11 +126,16 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 " IDE-like autocompletion without
 Plug 'roxma/nvim-completion-manager'
 
+Plug 'machakann/vim-highlightedyank'
+
 call plug#end()
 " }}}
 "
 " Settings -------------------------{{{
 "filetype plugin indent on
+
+" enable mouse scrolling and selection
+:set mouse=a
 
 if !exists('g:syntax_on')
     syntax enable
