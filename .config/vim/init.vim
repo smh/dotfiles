@@ -135,7 +135,7 @@ call plug#end()
 "filetype plugin indent on
 
 " enable mouse scrolling and selection
-:set mouse=a
+set mouse=a
 
 if !exists('g:syntax_on')
     syntax enable
