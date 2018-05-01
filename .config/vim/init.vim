@@ -167,6 +167,8 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'reason': ['ocaml-language-server', '--stdio'],
+    \ 'ocaml': ['ocaml-language-server', '--stdio'],
     \ }
 if executable('javascript-typescript-stdio')
   " let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
@@ -191,6 +193,10 @@ autocmd FileType javascript,javascript.jsx nnoremap <buffer>
 " <leader>lf to fuzzy find the symbols in the current document
 autocmd FileType javascript,javascript.jsx nnoremap <buffer>
   \ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>
+
+autocmd FileType reason nnoremap <buffer> gd :call LanguageClient_textDocument_definition()<cr>
+autocmd FileType reason nnoremap <buffer> gf :call LanguageClient_textDocument_formatting()<cr>
+autocmd FileType reason nnoremap <buffer> <cr> :call LanguageClient_textDocument_hover()<cr>
 
 " Required for operations modifying multiple buffers like rename.
 set hidden
