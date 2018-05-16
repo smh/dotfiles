@@ -614,7 +614,7 @@ let g:user_emmet_settings = {
   \}
 "}}}
 " VimWiki ------------------------------------ {{{
-let g:vimwiki_list = [{'path': '~/Dropbox/Private/vimwiki'}]
+let g:vimwiki_list = [{'path': '~/Dropbox (Personal)/Private/vimwiki'}]
 if has('win32unix')
   let g:vimwiki_list = [{'path': '~/vimwiki'}]
 endif
