@@ -167,7 +167,7 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'reason': ['ocaml-language-server', '--stdio'],
+    \ 'reason': ['reason-language-server', '--stdio'],
     \ 'ocaml': ['ocaml-language-server', '--stdio'],
     \ }
 if executable('javascript-typescript-stdio')
@@ -542,8 +542,8 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Neoformat -----------------------------------{{{
 augroup NeoFormatPrettier
-  autocmd BufWritePre *.js,*.jsx Neoformat
-  autocmd FileType javascript,javascript.jsx,jsx setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all
+  autocmd BufWritePre *.js,*.jsx,*.re Neoformat
+  " autocmd FileType javascript,javascript.jsx,jsx setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all
 augroup END
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
@@ -551,15 +551,15 @@ let g:neoformat_try_formatprg = 1
 " }}}
 " Neomake ------------------------------------{{{
 
-function! s:findRootPackageJsonFolder() abort
-  " Try to use nearest first; findfile .; goes from current file upwards
-  let l:filepath = findfile('package.json', '.;')
-  if empty(l:filepath)
-    return ''
-  else
-    return fnamemodify(resolve(expand(l:filepath)), ':h')
-  endif
-endfunction
+" function! s:findRootPackageJsonFolder() abort
+"   " Try to use nearest first; findfile .; goes from current file upwards
+"   let l:filepath = findfile('package.json', '.;')
+"   if empty(l:filepath)
+"     return ''
+"   else
+"     return fnamemodify(resolve(expand(l:filepath)), ':h')
+"   endif
+" endfunction
 
 " Sets b:neomake_javascript_enabled_makers based on what is present in the
 " project
