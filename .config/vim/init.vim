@@ -122,9 +122,14 @@ Plug 'reasonml-editor/vim-reason-plus'
 
 " LanguageClient plugin
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-"
-" IDE-like autocompletion without
-Plug 'roxma/nvim-completion-manager'
+
+" function signatures from completions in command line
+Plug 'Shougo/echodoc.vim'
+
+" completion
+Plug 'ncm2/ncm2'
+" ncm2 requires nvim-yarp
+Plug 'roxma/nvim-yarp'
 
 Plug 'machakann/vim-highlightedyank'
 
@@ -167,9 +172,10 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'reason': ['reason-language-server', '--stdio'],
+    \ 'reason': ['ocaml-language-server', '--stdio'],
     \ 'ocaml': ['ocaml-language-server', '--stdio'],
     \ }
+
 if executable('javascript-typescript-stdio')
   " let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
   " let g:LanguageClient_serverCommands['javascript.jsx']= ['javascript-typescript-stdio']
@@ -194,12 +200,22 @@ autocmd FileType javascript,javascript.jsx nnoremap <buffer>
 autocmd FileType javascript,javascript.jsx nnoremap <buffer>
   \ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>
 
-autocmd FileType reason nnoremap <buffer> gd :call LanguageClient_textDocument_definition()<cr>
-autocmd FileType reason nnoremap <buffer> gf :call LanguageClient_textDocument_formatting()<cr>
-autocmd FileType reason nnoremap <buffer> <cr> :call LanguageClient_textDocument_hover()<cr>
+autocmd FileType reason,javascript,javascript.jsx nnoremap <buffer>
+  \ gd :call LanguageClient_textDocument_definition({'gotoCmd': 'split'})<cr>
+autocmd FileType reason,javascript,javascript.jsx nnoremap <buffer>
+  \ gD :call LanguageClient_textDocument_documentSymbol()<cr>
+autocmd FileType reason,javascript,javascript.jsx nnoremap <buffer>
+  \ gf :call LanguageClient_textDocument_formatting()<cr>
+autocmd FileType reason,javascript,javascript.jsx nnoremap <buffer>
+  \ <cr> :call LanguageClient_textDocument_hover()<cr>
+autocmd FileType reason,javascript,javascript.jsx nnoremap <buffer>
+  \ gr :call LanguageClient_textDocument_rename()<cr>
+autocmd FileType reason,javascript,javascript.jsx nnoremap <buffer>
+  \ gm :call LanguageClient_contextMenu()<cr>
 
 " Required for operations modifying multiple buffers like rename.
 set hidden
+set signcolumn=yes
 
 " Ultisnips *******************************************************************
 " Trigger configuration
@@ -238,6 +254,20 @@ map <c-_> <Plug>NERDCommenterToggle
 "}}}
 "
 " Color ---------------------------------{{{
+" Fix highlighting for spell checks in terminal
+function! s:base16_customize() abort
+  " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
+  " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
+  call Base16hi("SpellBad",   "", "", "", g:base16_cterm01, "", "")
+  call Base16hi("SpellCap",   "", "", "", g:base16_cterm01, "", "")
+  call Base16hi("SpellLocal", "", "", "", g:base16_cterm01, "", "")
+  call Base16hi("SpellRare",  "", "", "", g:base16_cterm01, "", "")
+endfunction
+
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
 "set background=dark
 "let g:solarized_termcolors=16
 "let g:solarized_visibility="high"
@@ -379,16 +409,12 @@ function! DoPrettyXML() abort
 endfunction
 command! PrettyXML call DoPrettyXML()
 
-" " deoplete config
-" let g:deoplete#enable_at_startup = 1
-" " disable autocomplete
-" let g:deoplete#disable_auto_complete = 1
+" enable ncm2 for all buffer
+autocmd BufEnter * call ncm2#enable_for_buffer()
 
-" if has('gui_running')
-"     inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
-" else
-"     inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
-" endif
+" note that must keep noinsert in completeopt, the others is optional
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c
 
 " UltiSnips config
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -601,8 +627,9 @@ let g:neoformat_try_formatprg = 1
 "}}}
 
 " Ale ---------------------------------------- {{{
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
+let g:ale_sign_error = '◉'
+let g:ale_sign_warning = '◉'
+highlight ALEErrorSign ctermfg=red ctermbg=18
 "}}}
 
 " emmet-vim ---------------------------------- {{{
@@ -679,3 +706,7 @@ nnoremap <leader>s :source ~/.config/vim/init.vim<CR>
 set sessionoptions=options " don't save options and mappings
 set sessionoptions=folds
 "}}}
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
