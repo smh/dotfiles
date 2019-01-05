@@ -98,7 +98,7 @@ Plug 'mattn/emmet-vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'wakatime/vim-wakatime'
+" Plug 'wakatime/vim-wakatime'
 
 " if has('nvim')
 "   Plug 'Shougo/deoplete.nvim'
