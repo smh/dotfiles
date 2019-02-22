@@ -176,15 +176,15 @@ let g:LanguageClient_serverCommands = {
     \ 'ocaml': ['ocaml-language-server', '--stdio'],
     \ }
 
-if executable('javascript-typescript-stdio')
-  " let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-  " let g:LanguageClient_serverCommands['javascript.jsx']= ['javascript-typescript-stdio']
-  " Use LanguageServer for omnifunc completion
-  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-else
-  echo "javascript-typescript-stdio not installed!\n"
-  :cq
-endif
+" if executable('javascript-typescript-stdio')
+"   " let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+"   " let g:LanguageClient_serverCommands['javascript.jsx']= ['javascript-typescript-stdio']
+"   " Use LanguageServer for omnifunc completion
+"   autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+" else
+"   echo "javascript-typescript-stdio not installed!\n"
+"   :cq
+" endif
 
 " <leader>ld to go to definition
 autocmd FileType javascript,javascript.jsx nnoremap <buffer>
