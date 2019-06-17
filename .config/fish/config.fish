@@ -2,6 +2,7 @@ if status --is-interactive
   set -g EDITOR nvim
   set -g FZF_TMUX 1
 
+  set PATH ~/bin $PATH
   if not test -f ~/.base16_theme
     base16 ocean
   end
