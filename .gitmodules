@@ -4,3 +4,6 @@
 [submodule ".config/asdf"]
 	path = .config/asdf
 	url = https://github.com/asdf-vm/asdf.git
+[submodule "/Users/smh/.config/tmux/plugins/tpm"]
+	path = /Users/smh/.config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
