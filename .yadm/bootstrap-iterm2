@@ -13,7 +13,7 @@ if [ "$system_type" = "Darwin" ]; then
     defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.config/iTerm2"
 
     # Tell iTerm2 to use the custom preferences in the directory
-    defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+    defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
   fi
 
 fi
