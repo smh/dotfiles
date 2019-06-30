@@ -19,4 +19,15 @@ if [ "$system_type" = "Darwin" ]; then
   source $HOME/.yadm/bootstrap-homebrew
   source $HOME/.yadm/bootstrap-iterm2
   source $HOME/.yadm/bootstrap-pyenv
+
+  # change to fish shell
+  if [ -f "/usr/local/bin/fish" ]; then
+    if grep -Fxq "/usr/local/bin/fish" /etc/shells; then
+      echo fish already setup as allowed shell
+    else
+      echo adding /usr/local/bin/fish as allowed shell
+      sudo sh -c "echo /usr/local/bin/fish >> /etc/shells"
+      chsh -s /usr/local/bin/fish
+    fi
+  fi
 fi
