@@ -16,6 +16,9 @@ if [ "$system_type" = "Darwin" ]; then
   # show status bar
   defaults write com.apple.finder ShowStatusBar -bool true
 
+  # set locale (ends up with en_NO.UTF-8 otherwise when language set to english and region is Norway)
+  defaults write NSGlobalDomain AppleLocale en_US
+
   source $HOME/.yadm/bootstrap-homebrew
   source $HOME/.yadm/bootstrap-iterm2
   source $HOME/.yadm/bootstrap-pyenv
