@@ -23,6 +23,9 @@ if [ "$system_type" = "Darwin" ]; then
   source $HOME/.yadm/bootstrap-iterm2
   source $HOME/.yadm/bootstrap-pyenv
 
+  # install neovim gem
+  gem install --user-install neovim
+
   # change to fish shell
   if [ -f "/usr/local/bin/fish" ]; then
     if grep -Fxq "/usr/local/bin/fish" /etc/shells; then

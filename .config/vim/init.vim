@@ -17,11 +17,6 @@ if &shell =~# 'fish$'
   set shell=sh
 endif
 
-let g:python_host_prog = '/Users/smh/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/smh/.pyenv/versions/neovim3/bin/python'
-
-language en_US.UTF-8
-
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent! execute '!curl --create-dirs -fsSLo ~/.local/share/nvim/site/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
   autocmd vimrc VimEnter * silent! PlugInstall
