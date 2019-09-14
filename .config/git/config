@@ -40,9 +40,10 @@
   pretty = format:%C(yellow)%h %Cblue%>(13)%ad %Cgreen%<(9)%aN%Cred%d %Creset%s
 
 [status]
-  short = true
   branch = true
 
 [alias]
   s = status --short
-  st = status --long
+  st = status
+[pull]
+  rebase = true
