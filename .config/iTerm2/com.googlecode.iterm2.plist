@@ -409,11 +409,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>664 194 702 559 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>530 493 620 392 0 0 1680 1050 </string>
+	<string>530 476 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>172 580 1018 447 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1050 0 0 1680 1027 </string>
+	<string>233 78 850 610 0 0 1680 1050 </string>
 	<key>NeverWarnAboutShortLivedSessions_04B81180-3F7A-4ED0-9462-C736F7298735</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -738,6 +738,8 @@
 			<integer>0</integer>
 			<key>Initial Text</key>
 			<string></string>
+			<key>Initial Use Transparency</key>
+			<false/>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -1127,6 +1129,7 @@
 		<string>3.3.2</string>
 		<string>3.2.9</string>
 		<string>3.3.1</string>
+		<string>3.3.4</string>
 		<string>3.3.0</string>
 	</array>
 	<key>NoSyncBFPFavorites</key>
@@ -1149,9 +1152,9 @@
 	<key>NoSyncInstallationId</key>
 	<string>99E98E85-F167-437A-BE27-8B6D720CB726</string>
 	<key>NoSyncLastTipTime</key>
-	<real>590594220.30005705</real>
+	<real>592493782.15507805</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>15</integer>
+	<integer>21</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>586718367.42826402</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -1912,6 +1915,25 @@
 		<string>0048</string>
 		<string>0049</string>
 		<string>0050</string>
+		<string>0051</string>
+		<string>0052</string>
+		<string>0053</string>
+		<string>0054</string>
+		<string>0055</string>
+		<string>0056</string>
+		<string>0057</string>
+		<string>0058</string>
+		<string>0059</string>
+		<string>0060</string>
+		<string>0061</string>
+		<string>0062</string>
+		<string>0063</string>
+		<string>0064</string>
+		<string>0065</string>
+		<string>0066</string>
+		<string>0067</string>
+		<string>0068</string>
+		<string>0069</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1983,7 +2005,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-09-19T12:31:59Z</date>
+	<date>2019-10-11T21:04:59Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -2030,7 +2052,7 @@
 	<key>UseCompactLabel</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
-	<false/>
+	<true/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WebKitDefaultFontSize</key>
@@ -2052,7 +2074,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.2</string>
+	<string>3.3.4</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
