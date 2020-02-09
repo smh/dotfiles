@@ -34,6 +34,8 @@ Plug 'jreybert/vimagit'
 " Plug 'benekastah/neomake'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -375,6 +377,27 @@ let g:airline_symbols.notexists = '∄'
 
 " let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " let g:airline_skip_empty_sections = 1
+
+let g:airline#extensions#tmuxline#enabled = 0
+let g:tmuxline_preset = {
+      \'a'    : '#S #I:#P',
+      \'b'    : '#H',
+      \'c'    : '',
+      \'win'  : '#I:#W#F',
+      \'cwin' : '#I:#W#F',
+      \'x'    : '#(~/bin/tmux-spotify-info)',
+      \'y'    : "#{?client_prefix, cmd ,#{?pane_in_mode, cp }}",
+      \'z'    : '%a %b %d  %H:%M '}
+
+let s:powerline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
+    \ 'space' : ''}
+
+"#set -g status-right '#{prefix_highlight} #[fg=green]#(~/bin/tmux-spotify-info) #[fg=black,bg=blue,none] %a %b %d  %H:%M '
+
 
 function! DoPrettyXML() abort
   " save the filetype so we can restore it later
