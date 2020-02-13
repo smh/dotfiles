@@ -82,7 +82,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-journal'
 
 Plug 'sbdchd/neoformat'
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'w0rp/ale'
 
 Plug 'mattn/emmet-vim'
@@ -586,16 +586,17 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDTrimTrailingWhitespace = 1
 
 " vim-prettier
-" let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+let g:prettier#autoformat_config_present = 1
+
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " Neoformat -----------------------------------{{{
-augroup NeoFormatPrettier
-  autocmd BufWritePre *.js,*.jsx,*.re,*.rei,*.ml,*.mli Neoformat
-  " autocmd FileType javascript,javascript.jsx,jsx setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all
-augroup END
+" augroup NeoFormatPrettier
+"   autocmd BufWritePre *.js,*.jsx,*.re,*.rei,*.ml,*.mli Neoformat
+"   " autocmd FileType javascript,javascript.jsx,jsx setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all
+" augroup END
 " Use formatprg when available
-let g:neoformat_try_formatprg = 1
+" let g:neoformat_try_formatprg = 1
 " let g:neoformat_only_msg_on_error = 1
 " }}}
 " Neomake ------------------------------------{{{
