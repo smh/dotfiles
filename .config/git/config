@@ -11,14 +11,21 @@
   interactive = auto
   status = auto
 
+[diff]
+  tool = vimdiff
+
 [merge]
-  tool = mvim
+  tool = vimdiff
 
 [mergetool]
   keepBackup = true
+  path = nvim
 
-[mergetool "mvim"]
-  cmd=mvim -d -g $LOCAL $MERGED $REMOTE
+; [mergetool "mvim"]
+  ; cmd=mvim -d -g $LOCAL $MERGED $REMOTE
+
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [github]
   user = smh
