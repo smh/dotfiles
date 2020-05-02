@@ -13,6 +13,7 @@
 
 [diff]
   tool = vimdiff
+  algorithm = patience
 
 [merge]
   tool = vimdiff
