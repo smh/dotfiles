@@ -79,7 +79,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 
-Plug 'ludovicchabant/gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
@@ -92,6 +92,10 @@ Plug 'tomlion/vim-solidity'
 "Plug 'Shougo/echodoc.vim'
 
 Plug 'machakann/vim-highlightedyank'
+
+Plug 'reasonml-editor/vim-reason-plus'
+
+Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 " }}}
@@ -182,6 +186,13 @@ endif
 set hidden
 set signcolumn=yes
 
+" More natural split opening.
+set splitbelow
+set splitright
+
+" Show leader key
+set showcmd
+
 " Ultisnips *******************************************************************
 " Trigger configuration
 "let g:UltiSnipsExpandTrigger='<tab>'
@@ -206,6 +217,8 @@ else
 endif
 
 let g:mapleader = ' '
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 map <leader>n :NERDTreeFocus<CR>
 map <leader>v :vsplit<CR>
