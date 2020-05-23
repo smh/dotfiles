@@ -16,4 +16,6 @@ if status --is-interactive
   #fish_vi_cursor
 end
 
-set -g fish_user_paths "/usr/local/bin" $fish_user_paths
+set -eg fish_user_paths
+
+#set -g fish_user_paths "/usr/local/bin" $fish_user_paths
