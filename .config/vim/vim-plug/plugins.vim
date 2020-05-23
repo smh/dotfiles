@@ -18,7 +18,6 @@ call plug#begin('~/.config/vim/plugged')
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
-  Plug 'tpope/vim-markdown'
   Plug 'tpope/vim-obsession'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-rhubarb'
@@ -26,12 +25,12 @@ call plug#begin('~/.config/vim/plugged')
 
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-  " Plug 'scrooloose/nerdcommenter'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'ryanoasis/vim-devicons'
+
 
   Plug 'chriskempson/base16-vim'
   Plug 'vimwiki/vimwiki'
-
-  Plug 'ledger/vim-ledger'
 
   Plug 'sheerun/vim-polyglot'
 
@@ -66,19 +65,7 @@ call plug#begin('~/.config/vim/plugged')
 
   Plug 'ludovicchabant/vim-gutentags'
 
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-  Plug 'ryanoasis/vim-devicons'
-
-  Plug 'wilriker/vim-fish'
-
-  Plug 'tomlion/vim-solidity'
-
-  " function signatures from completions in command line
-  "Plug 'Shougo/echodoc.vim'
-
   Plug 'machakann/vim-highlightedyank'
-
-  Plug 'reasonml-editor/vim-reason-plus'
 
   Plug 'liuchengxu/vim-which-key'
 
