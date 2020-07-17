@@ -6,6 +6,10 @@
     "yaml",
     "xml",
     "python",
-    "reason"
+    "reason",
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact"
   ]
 }

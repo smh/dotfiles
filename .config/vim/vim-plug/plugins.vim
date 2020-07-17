@@ -52,16 +52,14 @@ call plug#begin('~/.config/vim/plugged')
   Plug 'junegunn/rainbow_parentheses.vim'
   Plug 'junegunn/vim-journal'
 
-  Plug 'sbdchd/neoformat'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'w0rp/ale'
 
   Plug 'christoomey/vim-tmux-navigator'
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  "Plug 'SirVer/ultisnips'
-  "Plug 'honza/vim-snippets'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
 
   Plug 'ludovicchabant/vim-gutentags'
 

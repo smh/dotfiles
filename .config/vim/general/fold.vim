@@ -5,5 +5,5 @@ set foldmethod=syntax
 "set foldlevelstart=1
 
 autocmd Syntax c,cpp,vim,xml,html setlocal foldmethod=syntax
-autocmd Syntax c,cpp,vim,xml,html,javascript,typescript,typescriptreact normal zR
+autocmd Syntax c,cpp,vim,xml,html,ledger,javascript,typescript,typescriptreact normal zR
 
