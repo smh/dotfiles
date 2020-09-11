@@ -1,5 +1,6 @@
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 
 command! -bang -nargs=? -complete=dir Files

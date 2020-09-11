@@ -1,4 +1,4 @@
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Modified'  : '✹',
     \ 'Staged'    : '⊕',
     \ 'Untracked' : '⭒',
@@ -10,6 +10,9 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '◌',
     \ 'Unknown'   : '?'
     \ }
+
+" Close nerdtree after opening file
+let NERDTreeQuitOnOpen = 1
 
 autocmd vimrc FileType nerdtree setlocal nolist
 
@@ -25,4 +28,4 @@ let g:NERDDefaultAlign = 'left'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-map <leader>n :NERDTreeFocus<CR>
+map <leader>n :NERDTreeFind<CR>
