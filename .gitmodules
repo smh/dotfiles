@@ -7,6 +7,3 @@
 [submodule ".config/tmux/plugins/tpm"]
 	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "/Users/smh/.config/tmux/plugins/tpm"]
-	path = /Users/smh/.config/tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
