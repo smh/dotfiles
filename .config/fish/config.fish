@@ -6,8 +6,9 @@ if status --is-interactive
 
   if not test -f ~/.base16_theme
     base16 ocean
+  else
+    sh ~/.base16_theme
   end
-  sh ~/.base16_theme
 
   alias vi=nvim
   alias dc=docker-compose
