@@ -15,7 +15,6 @@ source ~/.config/vim/keys/mappings.vim
 source ~/.config/vim/plug-config/ale.vim
 source ~/.config/vim/plug-config/airline.vim
 source ~/.config/vim/plug-config/base16.vim
-source ~/.config/vim/plug-config/coc.vim
 source ~/.config/vim/plug-config/commentary.vim
 source ~/.config/vim/plug-config/fugitive.vim
 source ~/.config/vim/plug-config/fzf.vim
@@ -26,3 +25,4 @@ source ~/.config/vim/plug-config/signify.vim
 source ~/.config/vim/plug-config/snippets.vim
 source ~/.config/vim/plug-config/vimwiki.git
 source ~/.config/vim/plug-config/whichkey.vim
+source ~/.config/vim/plug-config/coc.vim
