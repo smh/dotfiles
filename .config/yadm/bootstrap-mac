@@ -19,9 +19,9 @@ if [ "$system_type" = "Darwin" ]; then
   # set locale (ends up with en_NO.UTF-8 otherwise when language set to english and region is Norway)
   defaults write NSGlobalDomain AppleLocale en_US
 
-  source $HOME/.yadm/bootstrap-homebrew
-  source $HOME/.yadm/bootstrap-iterm2
-  source $HOME/.yadm/bootstrap-pyenv
+  source $HOME/.config/yadm/bootstrap-homebrew
+  source $HOME/.config/yadm/bootstrap-iterm2
+  source $HOME/.config/yadm/bootstrap-pyenv
 
   # install neovim gem
   gem install --user-install neovim
