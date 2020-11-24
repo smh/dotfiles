@@ -28,11 +28,12 @@ call plug#begin('~/.config/vim/plugged')
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'ryanoasis/vim-devicons'
 
-
   Plug 'chriskempson/base16-vim'
   Plug 'vimwiki/vimwiki'
 
   Plug 'sheerun/vim-polyglot'
+
+  Plug 'rescript-lang/vim-rescript'
 
   Plug 'editorconfig/editorconfig-vim'
   Plug 'airblade/vim-rooter'

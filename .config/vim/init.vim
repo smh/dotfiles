@@ -26,3 +26,4 @@ source ~/.config/vim/plug-config/snippets.vim
 source ~/.config/vim/plug-config/vimwiki.git
 source ~/.config/vim/plug-config/whichkey.vim
 source ~/.config/vim/plug-config/coc.vim
+source ~/.config/vim/plug-config/vim-rescript.vim
