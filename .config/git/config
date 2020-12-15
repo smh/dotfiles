@@ -1,3 +1,19 @@
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+  syntax-theme = base16
+
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+
 [include]
   path = ~/.config/git/config.local
 
@@ -14,7 +30,8 @@
 [diff]
   tool = vimdiff
   algorithm = patience
-	submodule = log
+  submodule = log
+  colorMoved = default
 
 [merge]
   tool = vimdiff
