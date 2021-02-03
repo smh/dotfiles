@@ -1,5 +1,5 @@
 {
-  "coc.preferences.extensionUdateCheck": "daily",
+  "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
@@ -8,9 +8,19 @@
     "xml",
     "python",
     "reason",
+    "rescript",
     "typescript",
     "typescriptreact",
     "javascript",
     "javascriptreact"
-  ]
+  ],
+  "languageserver": {
+    "rescript": {
+      "enable": true,
+      "module": "~/.config/nvim/plugged/vim-rescript/rescript-vscode/extension/server/out/server.js",
+      "args": ["--node-ipc"],
+      "filetypes": ["rescript"],
+      "rootPatterns": ["bsconfig.json"]
+    }
+  }
 }
