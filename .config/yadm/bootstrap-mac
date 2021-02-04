@@ -27,13 +27,14 @@ if [ "$system_type" = "Darwin" ]; then
   gem install --user-install neovim
 
   # change to fish shell
-  if [ -f "/usr/local/bin/fish" ]; then
-    if grep -Fxq "/usr/local/bin/fish" /etc/shells; then
+  FISH_LOCATION=$(which fish)
+  if [ -f "$FISH_LOCATION" ]; then
+    if grep -Fxq "$FISH_LOCATION" /etc/shells; then
       echo fish already setup as allowed shell
     else
-      echo adding /usr/local/bin/fish as allowed shell
-      sudo sh -c "echo /usr/local/bin/fish >> /etc/shells"
-      chsh -s /usr/local/bin/fish
+      echo adding $FISH_LOCATION as allowed shell
+      sudo sh -c "echo $FISH_LOCATION >> /etc/shells"
+      chsh -s $FISH_LOCATION
     fi
   fi
 fi
