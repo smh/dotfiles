@@ -1,0 +1,65 @@
+#!/bin/ksh
+KEYS="State:/Network/Service/com.cisco.anyconnect/DNS"
+append_domains=$*
+
+echo domains: $append_domains
+
+# Check for known keys in database
+for DNS in $KEYS; do
+    key=$(echo list $DNS | scutil)
+    echo $key
+    if [[ $key == "  No such key" ]]; then
+      echo WTF
+       break
+    fi
+    echo foundit
+    found=$DNS
+done
+if [[ -z $found ]]; then
+    print -u2 "unable to find DNS key!"
+    exit
+fi
+
+# Read current settings from key
+typeset -A data
+thistype="unknown"
+print "get $DNS\nd.show" | scutil | while read type colon value rest; do
+     case $type in
+     (DomainName)   data[$type]=$value;;
+     (SearchDomains|ServerAddresses)    thistype="$type";;
+     ([0-9])        data[$thistype]="${data[$thistype]}$value ";;
+     (*)        thistype="unknown";;
+     esac
+done
+
+# Check to see if the domains are already listed
+domains=${data[SearchDomains]%% }
+for domain in $append_domains; do
+    found=""
+    for current in $domains; do
+        if [[ $domain == $current ]]; then
+       found=$domain
+    fi
+    done
+    if [[ -z $found ]]; then
+        add="${add}${domain} "
+    fi
+done
+
+# If there is nothing to add then we are done.
+if [[ -z $add ]]; then
+    exit
+fi
+
+DOMAINS="$domains ${add%% }"
+echo Replacing SearchDomains with $DOMAINS
+echo on service $DNS
+
+sudo scutil <<HERE
+get $DNS
+d.remove SearchDomains
+d.add SearchDomains $DOMAINS
+set $DNS
+show $DNS
+exit
+HERE
