@@ -4,6 +4,8 @@ augroup vimrc
   autocmd!
 augroup END
 
+let g:python3_host_prog = '$HOME/VirtualEnvs/neovim/bin/python'
+
 source ~/.config/vim/vim-plug/plugins.vim
 
 source ~/.config/vim/general/fold.vim
