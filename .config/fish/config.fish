@@ -13,10 +13,4 @@ if status --is-interactive
   alias vi=nvim
   alias dc=docker-compose
   alias dm=docker-machine
-
-  #fish_vi_cursor
 end
-
-set -eg fish_user_paths
-
-#set -g fish_user_paths "/usr/local/bin" $fish_user_paths
