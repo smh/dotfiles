@@ -22,9 +22,10 @@ function __replace_search_domains -a dns_key
 end
 
 function __add_search_domains
-  set append_domains $argv
+  set vpn_domains $argv
 
-  echo 'list .*/utun.*/DNS' | scutil | read subKey index equals dns_key
+  # echo 'list .*/utun.*/DNS' | scutil | read subKey index equals dns_key
+  echo 'list State:/Network/Service/.*/DNS' | scutil | read subKey index equals dns_key
   if not string length -q -- $dns_key
     echo "ERROR: Unable to find DNS entry! Is vpn connection established?"
     return 1
@@ -32,7 +33,7 @@ function __add_search_domains
 
   set search_domains (__existing_search_domains $dns_key)
 
-  for domain in $append_domains
+  for domain in $vpn_domains
     if not contains $domain $search_domains
       set -a add_domains $domain
     end
@@ -40,7 +41,7 @@ function __add_search_domains
 
   # If there is nothing to add then we are done.
   if set -q $add_domains
-    echo "All search domains already configured ($append_domains)"
+    echo "All search domains already configured ($vpn_domains)"
     return 0
   end
 
@@ -50,17 +51,18 @@ function __add_search_domains
 end
 
 function vpn -a cmd
-  cat ~/.config/vpn/append_domains | read -la append_domains
   cat ~/.config/vpn/vpn-host | read vpn_host
   cat ~/.config/vpn/vpn-user | read vpn_user
+  cat ~/.config/vpn/vpn-domains | read -la vpn_domains
+  cat ~/.config/vpn/vpn-slice | read vpn_slice
   set vpn_log_dir ~/.cache/vpn
   mkdir -p $vpn_log_dir
   set logfile $vpn_log_dir/$vpn_host.log
   switch $cmd
     case up
-      sudo openconnect --background --user=$vpn_user $vpn_host >> $logfile
-      gtail -n 7 -f $logfile | sed '/add net default:/ q'
-      __add_search_domains $append_domains
+      sudo openconnect --background --user=$vpn_user $vpn_host --script="vpn-slice --domains-vpn-dns=$vpn_domains $vpn_slice" >> $logfile
+      gtail -n 7 -f $logfile | sed '/Established DTLS/ q'
+      __add_search_domains (string split , $vpn_domains)
     case down
       sudo pkill -SIGINT openconnect
       gtail -n 7 -f $argv[2..-1] $logfile | sed '/User cancelled/ q'
