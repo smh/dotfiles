@@ -1,0 +1,2 @@
+.ssh/conf.d/misc-hosts.conf  filter=crypt diff=crypt merge=crypt
+.config/vpn/*                filter=crypt diff=crypt merge=crypt
