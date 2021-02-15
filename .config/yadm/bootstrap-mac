@@ -16,6 +16,9 @@ if [ "$system_type" = "Darwin" ]; then
   # show status bar
   defaults write com.apple.finder ShowStatusBar -bool true
 
+  # disable press and hold for accents
+  defaults write -g ApplePressAndHoldEnabled 0
+
   # set locale (ends up with en_NO.UTF-8 otherwise when language set to english and region is Norway)
   defaults write NSGlobalDomain AppleLocale en_US
 
