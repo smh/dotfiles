@@ -86,18 +86,25 @@ function __remove_search_domains
   __replace_search_domains $dns_key $remaining_domains
 end
 
+function __load_config -a file
+  cat ~/.config/vpn/$file | grep -v "#" | tr '\n' ' ' | string trim
+end
+
 function vpn -a cmd
-  cat ~/.config/vpn/vpn-host | read vpn_host
-  cat ~/.config/vpn/vpn-user | read vpn_user
-  cat ~/.config/vpn/vpn-domains | tr '\n' ' ' | read -la vpn_domains
-  cat ~/.config/vpn/vpn-slice-routes | tr '\n' ' ' | read vpn_slice_routes
+  __load_config 'vpn-host' | read vpn_host
+  __load_config 'vpn-user' | read vpn_user
+  __load_config 'vpn-domains' | read -la vpn_domains
+  __load_config 'vpn-slice-routes' | read -la vpn_slice_routes
+
   set vpn_log_dir ~/.cache/vpn
-  mkdir -p $vpn_log_dir
   set logfile $vpn_log_dir/$vpn_host.log
+
+  mkdir -p $vpn_log_dir
+
   switch $cmd
     case up
       set vpn_slice_domains (string join , $vpn_domains)
-      set vpn_slice_cmd "vpn-slice --domains-vpn-dns=$vpn_slice_domains $vpn_slice_routes"
+      set vpn_slice_cmd "vpn-slice -v -D --domains-vpn-dns=$vpn_slice_domains $vpn_slice_routes"
       sudo openconnect --background --user=$vpn_user $vpn_host --script="$vpn_slice_cmd" >> $logfile
       gtail -n 7 -f $logfile | sed '/Established DTLS/ q'
       __add_search_domains $vpn_domains
