@@ -1,0 +1,10 @@
+git:
+  pull:
+    mode: "rebase"
+keybinding:
+  # universal:
+  # scrollUpMain-alt2: '' # main panel scrool up
+  # scrollDownMain-alt2: '' # main panel scrool down
+  commits:
+    moveDownCommit: "<c-d>"
+    moveUpCommit: "<c-u>"
