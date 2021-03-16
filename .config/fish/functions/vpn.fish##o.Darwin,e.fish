@@ -117,7 +117,12 @@ function vpn -a cmd
     case logs
       tail $argv[2..-1] $logfile
     case cleanup
+      echo "killing openconnect"
       sudo pkill -SIGINT openconnect
+      for i in $vpn_domains
+        echo "removing resolver domain-file /etc/resolver/$i"
+        sudo rm /etc/resolver/$i
+      end
       __remove_search_domains $vpn_domains
   end
 end
