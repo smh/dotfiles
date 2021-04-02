@@ -22,5 +22,6 @@
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
     }
-  }
+  },
+  "java.home": "~/.config/asdf/installs/java/zulu-11.45.27/zulu-11.jdk/Contents/Home"
 }

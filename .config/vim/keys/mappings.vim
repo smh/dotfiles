@@ -1,4 +1,4 @@
-nnoremap <leader>s :source ~/.config/vim/init.vim<CR>
+nnoremap <leader>S :source ~/.config/vim/init.vim<CR>
 
 map <a-/> :Commentary<cr>
 map <leader>/ :Commentary<cr>

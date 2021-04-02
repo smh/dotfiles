@@ -1,6 +1,8 @@
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
+set timeoutlen=250
+
 "nnoremap <silent> g :silent <c-u> :silent WhichKey 'g'<CR> 
 
 " Create map to add keys to
@@ -25,20 +27,26 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 " let g:which_key_leader_map[';'] = [ ':Commands'                  , 'commands' ]
 " let g:which_key_leader_map['='] = [ '<C-W>='                     , 'balance windows' ]
 " let g:which_key_leader_map[','] = [ 'Startify'                   , 'start screen' ]
-" let g:which_key_leader_map.d = [ ':bd'                        , 'delete buffer']
 let g:which_key_leader_map.n = [ ':NERDTreeFind'              , 'explorer' ]
 let g:which_key_leader_map.m = [ ':NERDTreeToggle'            , 'explorer' ]
 " let g:which_key_leader_map.f = [ ':Files'                     , 'search files' ]
 let g:which_key_leader_map.h = 'split below'
-let g:which_key_leader_map.p = 'format'
-let g:which_key_leader_map.P = 'format selection'
-" let g:which_key_leader_map.q = [ 'q'                          , 'quit' ]
+let g:which_key_leader_map.f = 'format'
+let g:which_key_leader_map.F = 'format selection'
+let g:which_key_leader_map.i = 'toggle impl/header'
+let g:which_key_leader_map.S = 'source vimrc'
 " let g:which_key_leader_map.r = [ ':RnvimrToggle'              , 'ranger' ]
-" let g:which_key_leader_map.S = [ ':SSave'                     , 'save session' ]
-" let g:which_key_leader_map.T = [ ':Rg'                        , 'search text' ]
 let g:which_key_leader_map.v = 'split right'
 
 " Group mappings
+
+let g:which_key_leader_map.p = { 'name' : '+telescope' }
+let g:which_key_leader_map.p.b = 'Buffers'
+let g:which_key_leader_map.p.d = 'Dotfiles'
+let g:which_key_leader_map.p.f = 'Find files'
+let g:which_key_leader_map.p.s = 'Grep for'
+let g:which_key_leader_map.p.v = 'Vim config files'
+let g:which_key_leader_map.p.w = 'Find current word'
 
 " a is for actions
 let g:which_key_leader_map.a = { 'name' : '+actions' }
@@ -48,8 +56,8 @@ let g:which_key_leader_map.a.n = [':set nonumber!'          , 'line-numbers']
 let g:which_key_leader_map.a.r = [':set norelativenumber!'  , 'relative line nums']
 " let g:which_key_leader_map.a.s = [':let @/ = ""'            , 'remove search highlight']
 let g:which_key_leader_map.a.t = [':FloatermToggle'         , 'terminal']
-let g:which_key_leader_map.a.v = [':Codi'                   , 'virtual repl on']
-let g:which_key_leader_map.a.V = [':Codi!'                  , 'virtual repl off']
+" let g:which_key_leader_map.a.v = [':Codi'                   , 'virtual repl on']
+" let g:which_key_leader_map.a.V = [':Codi!'                  , 'virtual repl off']
 
 " b is for buffer
 " let g:which_key_leader_map.b = {

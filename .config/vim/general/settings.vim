@@ -1,4 +1,5 @@
 let g:mapleader = ' '
+let g:maplocalleader = ' '
 
 set hidden " Required for operations modifying multiple buffers like rename.
 

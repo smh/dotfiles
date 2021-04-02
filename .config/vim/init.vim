@@ -19,12 +19,12 @@ source ~/.config/vim/plug-config/airline.vim
 source ~/.config/vim/plug-config/base16.vim
 source ~/.config/vim/plug-config/commentary.vim
 source ~/.config/vim/plug-config/fugitive.vim
-source ~/.config/vim/plug-config/fzf.vim
-source ~/.config/vim/plug-config/fzf-checkout.vim
 source ~/.config/vim/plug-config/ledger.vim
 source ~/.config/vim/plug-config/nerdtree.vim
+source ~/.config/vim/plug-config/nvim-web-devicons.vim
 source ~/.config/vim/plug-config/signify.vim
 source ~/.config/vim/plug-config/snippets.vim
+source ~/.config/vim/plug-config/telescope.vim
 source ~/.config/vim/plug-config/vimwiki.git
 source ~/.config/vim/plug-config/whichkey.vim
 source ~/.config/vim/plug-config/coc.vim

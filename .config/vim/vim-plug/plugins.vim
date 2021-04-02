@@ -23,10 +23,13 @@ call plug#begin('~/.config/vim/plugged')
   Plug 'tpope/vim-rhubarb'
   Plug 'tpope/vim-speeddating'
 
+  Plug 'liskin/vim-fubitive'
+
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-  Plug 'ryanoasis/vim-devicons'
+  " Plug 'ryanoasis/vim-devicons'
+  Plug 'kyazdani42/nvim-web-devicons'
 
   Plug 'chriskempson/base16-vim'
   Plug 'vimwiki/vimwiki'
@@ -44,9 +47,9 @@ call plug#begin('~/.config/vim/plugged')
 
   Plug 'gorodinskiy/vim-coloresque'
 
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  Plug 'stsewd/fzf-checkout.vim'
+  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  " Plug 'junegunn/fzf.vim'
+  " Plug 'stsewd/fzf-checkout.vim'
 
   Plug 'junegunn/gv.vim'
   Plug 'junegunn/vim-slash'
@@ -68,5 +71,10 @@ call plug#begin('~/.config/vim/plugged')
   Plug 'machakann/vim-highlightedyank'
 
   Plug 'liuchengxu/vim-which-key'
+
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 call plug#end()
