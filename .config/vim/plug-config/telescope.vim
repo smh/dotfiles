@@ -1,6 +1,6 @@
 lua require('telescope').setup({defaults = {file_sorter = require('telescope.sorters').get_fzy_zorter}})
 
-nnoremap <C-p> :lua require('telescope.builtin').project_files({})<CR>
+nnoremap <C-p> :lua require('smh.telescope').project_files()<CR>
 
 nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>pd :lua require('smh.telescope').yadm_files({})<CR>
