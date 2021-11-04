@@ -102,6 +102,9 @@ function vpn -a cmd
   mkdir -p $vpn_log_dir
 
   switch $cmd
+    case full
+      sudo openconnect --background --user=$vpn_user $vpn_host >> $logfile
+      gtail -n 7 -f $logfile | sed '/Established DTLS/ q'
     case up
       set vpn_slice_domains (string join , $vpn_domains)
       set vpn_slice_cmd "vpn-slice -v -D --domains-vpn-dns=$vpn_slice_domains $vpn_slice_routes"
