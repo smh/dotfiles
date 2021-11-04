@@ -9,7 +9,7 @@ local conf = require('telescope.config').values
 
 require('telescope').setup {
   defaults = {
-    file_sorteer = require('telescope.sorters').get_fzy_zorter,
+    file_sorter = require('telescope.sorters').get_fzy_zorter,
     color_devicons = true,
 
     -- file_previewer = previewers.vim_buffer_cat.new,

@@ -72,6 +72,7 @@ call plug#begin('~/.config/vim/plugged')
 
   Plug 'liuchengxu/vim-which-key'
 
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
