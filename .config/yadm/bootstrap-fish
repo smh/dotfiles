@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo initialize fisherman
-fish -c fisher
+echo initialize fisher plugin-manager
+fish -c "fisher update"
