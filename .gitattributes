@@ -1,2 +1,3 @@
 .ssh/conf.d/misc-hosts.conf  filter=crypt diff=crypt merge=crypt
 .config/vpn/*                filter=crypt diff=crypt merge=crypt
+.config/git/config.local##o.Darwin,u.stein.hustad filter=crypt diff=crypt merge=crypt

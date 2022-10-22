@@ -10,7 +10,7 @@ if status --is-interactive
     sh ~/.base16_theme
   end
 
-  alias vi=nvim
-  alias dc=docker-compose
-  alias dm=docker-machine
+  alias vi nvim
+  alias dc "docker compose"
+  alias dm docker-machine
 end

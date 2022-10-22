@@ -1,4 +1,5 @@
 set -x ASDF_DATA_DIR ~/.config/asdf
+#set -x ASDF_DIR ~/.config/asdf
 
 if test -d $ASDF_DATA_DIR
   source (brew --prefix asdf)/libexec/asdf.fish
