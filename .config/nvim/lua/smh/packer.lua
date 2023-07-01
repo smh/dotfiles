@@ -1,11 +1,11 @@
 -- install packer
 local fn = vim.fn
-local install_path = fn.stdpath 'data' ..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
 
 if fn.empty(fn.glob(install_path)) > 0 then
   is_bootstrap = true
-  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -27,8 +27,8 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0', -- or , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim', --tag = '0.1.0', -- or , branch = '0.1.x',
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   -- use({
@@ -46,6 +46,7 @@ return packer.startup(function(use)
       ts_update()
     end,
   }
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   use 'nvim-treesitter/playground'
   use 'nkrkv/nvim-treesitter-rescript'
@@ -54,26 +55,99 @@ return packer.startup(function(use)
   use 'mbbill/undotree'
 
   use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true,
+        },
+        filetypes = {
+          python = true,
+          gitcommit = true,
+          yaml = true,
+          lua = true,
+          javascript = true,
+          typescript = true,
+        },
+      })
+    end,
+  }
+
+  use {
     'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
     requires = {
       -- LSP Support
-      {'neovim/nvim-lspconfig'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
+      { 'neovim/nvim-lspconfig' },
 
       -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-path'},
-      {'saadparwaiz1/cmp_luasnip'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-nvim-lua'},
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
 
       -- Snippets
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
+      { 'L3MON4D3/LuaSnip' },
+      { 'rafamadriz/friendly-snippets' },
     }
   }
+
+  use {
+    -- https://github.com/jose-elias-alvarez/null-ls.nvim/discussions/593
+    -- :NullLsInfo
+    -- format with :lua vim.lsp.buf.formatting()
+    "jose-elias-alvarez/null-ls.nvim",
+    -- config = function()
+    --   -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save#sync-formatting
+    --   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    --   local null_ls = require("null-ls")
+    --   null_ls.setup({
+    --     -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+    --     sources = {
+    --       null_ls.builtins.formatting.black,
+    --       null_ls.builtins.diagnostics.flake8,
+    --       null_ls.builtins.diagnostics.shellcheck,
+    --     },
+
+    --     -- you can reuse a shared lspconfig on_attach callback here
+    --     on_attach = function(client, bufnr)
+    --       if client.supports_method("textDocument/formatting") then
+    --         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    --         vim.api.nvim_create_autocmd("BufWritePre", {
+    --           group = augroup,
+    --           buffer = bufnr,
+    --           callback = function()
+    --             -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+    --             vim.lsp.buf.formatting_sync()
+    --           end,
+    --         })
+    --       end
+    --     end,
+
+    --   })
+    -- end,
+    requires = { 'nvim-lua/plenary.nvim' },
+  }
+
+  use 'j-hui/fidget.nvim'
+
+  use({
+    'sQVe/sort.nvim',
+
+    -- Optional setup for overriding defaults.
+    -- config = function()
+    --   require("sort").setup({
+    --     -- Input configuration here.
+    --     -- Refer to the configuration section below for options.
+    --   })
+    -- end
+  })
 
   -- from old
   use 'vim-airline/vim-airline'
@@ -97,8 +171,8 @@ return packer.startup(function(use)
   -- use 'Xuyuanp/nerdtree-git-plugin'
   -- use 'tiagofumo/vim-nerdtree-syntax-highlight'
   -- use {
-    -- 'kyazdani42/nvim-web-devicons',
-    -- config = function () require 'nvim-web-devicons'.setup { default = true } end,
+  -- 'kyazdani42/nvim-web-devicons',
+  -- config = function () require 'nvim-web-devicons'.setup { default = true } end,
   -- }
 
   use 'chriskempson/base16-vim'
@@ -120,20 +194,22 @@ return packer.startup(function(use)
   -- use 'gorodinskiy/vim-coloresque'
   use {
     'NvChad/nvim-colorizer.lua',
-    config = function() require 'colorizer'.setup({
-      user_default_options = {
-        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-        -- Available modes for `mode`: foreground, background,  virtualtext
-        mode = "virtualtext", -- Set the display mode.
-        -- Available methods are false / true / "normal" / "lsp" / "both"
-        -- True is same as normal
-        tailwind = 'both', -- Enable tailwind colors
-        -- parsers can contain values used in |user_default_options|
-        sass = { enable = false, parsers = { css }, }, -- Enable sass colors
-        virtualtext = "■",
-      }
-    }) end
+    config = function()
+      require 'colorizer'.setup({
+        user_default_options = {
+          css = true,           -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = true,        -- Enable all CSS *functions*: rgb_fn, hsl_fn
+          -- Available modes for `mode`: foreground, background,  virtualtext
+          mode = "virtualtext", -- Set the display mode.
+          -- Available methods are false / true / "normal" / "lsp" / "both"
+          -- True is same as normal
+          tailwind = 'both',                             -- Enable tailwind colors
+          -- parsers can contain values used in |user_default_options|
+          sass = { enable = false, parsers = { css }, }, -- Enable sass colors
+          virtualtext = "■",
+        }
+      })
+    end
   }
   -- use {
   --   'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
