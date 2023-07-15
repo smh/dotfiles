@@ -203,9 +203,9 @@ return packer.startup(function(use)
           mode = "virtualtext", -- Set the display mode.
           -- Available methods are false / true / "normal" / "lsp" / "both"
           -- True is same as normal
-          tailwind = 'both',                             -- Enable tailwind colors
+          tailwind = 'both',                               -- Enable tailwind colors
           -- parsers can contain values used in |user_default_options|
-          sass = { enable = false, parsers = { css }, }, -- Enable sass colors
+          sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
           virtualtext = "■",
         }
       })
