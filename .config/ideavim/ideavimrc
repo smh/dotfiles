@@ -1,2 +1,12 @@
 set relativenumber
 set number
+set visualbell
+set noerrorbells
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdtree'
+Plug 'machakann/vim-highlightedyank'
+Plug 'chrisbra/matchit'
+
+set matchit
