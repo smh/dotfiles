@@ -1,5 +1,6 @@
-smh/pure
+brew
+jorgebucaran/fisher
 smh/base16-shell-fish
 jethrokuan/z
 jethrokuan/fzf
-brew
+decors/fish-colored-man
