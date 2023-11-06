@@ -7,6 +7,6 @@ echo init submodules
 yadm submodule update --recursive --init
 
 echo Update the yadm repo origin URL
-yadm remote set-url origin "git@github.com:smh/dotfiles.git"
+yadm remote set-url origin "https://github.com/smh/dotfiles.git"
 
 
