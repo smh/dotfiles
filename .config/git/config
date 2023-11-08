@@ -15,9 +15,6 @@
   ; file-style = bold yellow ul
   ; file-decoration-style = none
 
-[include]
-  path = ~/.config/git/config.local
-
 [user]
   name = Stein Martin Hustad
   email = stein@hustad.com
