@@ -4,12 +4,6 @@ if status --is-interactive
 
   set PATH ~/bin $PATH
 
-  if not test -f ~/.base16_theme
-    base16 ocean
-  else
-    sh ~/.base16_theme
-  end
-
   alias vi nvim
   alias dc "docker compose"
   alias dm docker-machine
