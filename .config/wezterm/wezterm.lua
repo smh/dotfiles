@@ -6,7 +6,7 @@ config.font = wezterm.font 'FiraCode Nerd Font'
 config.font_size = 15.0
 
 -- config.color_scheme = 'Default Dark (base16)'
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Catppuccin Macchiato"
 
 config.window_background_opacity = 0.90
 -- config.text_background_opacity = 0.0

@@ -3,4 +3,4 @@ vim.g.maplocalleader = ' '
 
 require("config.lazy")
 
-vim.cmd("colorscheme catppuccin-frappe")
+vim.cmd("colorscheme catppuccin-macchiato")
